@@ -72,12 +72,11 @@ class Generator
      */
     function run()
     {
-        $loader = new Twig_Loader_Filesystem($this->templateDir, [
+        $loader = new Twig_Loader_Filesystem($this->templateDir);
+        $twig = new Twig_Environment($loader, [
             'cache' => false,
             'debug' => true,
         ]);
-
-        $twig = new Twig_Environment($loader);
 
         $GLOBALS['PHPDocMD_classDefinitions'] = $this->classDefinitions;
         $GLOBALS['PHPDocMD_linkTemplate'] = $this->linkTemplate;
